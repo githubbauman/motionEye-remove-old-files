@@ -11,7 +11,7 @@ function usage {
 
 while [ $(usage) -ge ${ALERT} ]
     do
-        oldest_file=$(ls -ltd $(find "${MOTIONDATA}" -not -path '*/\.*' -type f \( ! -iname ".*" \) ) | tail -1 | awk '{ gsub("%","",$5); print $9 }')
+        oldest_file=$(ls -ltd $(find "${MOTIONDATA}" -not -path '*/\.*' -type f \( ! -iname ".*" \) ) | tail -1 | awk '{ print $9 }')
         $(rm  $oldest_file)
     done
 
