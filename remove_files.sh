@@ -14,3 +14,5 @@ while [ $(usage) -ge ${ALERT} ]
         oldest_file=$(ls -ltd $(find "${MOTIONDATA}" -not -path '*/\.*' -type f \( ! -iname ".*" \) ) | tail -1 | awk '{ gsub("%","",$5); print $9 }')
         $(rm  $oldest_file)
     done
+
+find "$MOTIONDATA" -type d -exec rmdir {} + 2>/dev/null
